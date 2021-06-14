@@ -1,4 +1,183 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="jackal">
     
+  <xacro:macro name="wheel" params="prefix *joint_pose">
+
+    <link name="${prefix}_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/jackal-wheel.stl"/>
+        </geometry>
+        <material name="black" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.477"/>
+        <inertia
+          ixx="0.0013" ixy="0" ixz="0"
+          iyy="0.0024" iyz="0"
+          izz="0.0013"/>
+      </inertial>
+    </link>
+
+    <gazebo reference="${prefix}_wheel_link">
+      <material>Gazebo/DarkGrey</material>
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.5"/>
+      <mu2 value="0.5"/>
+      <kp value="10000000.0" />
+      <kd value="1" />
+      <fdir1 value="1 0 0"/>
+    </gazebo>
+
+    <joint name="${prefix}_wheel" type="continuous">
+      <parent link="chassis_link"/>
+      <child link="${prefix}_wheel_link" />
+      <xacro:insert_block name="joint_pose" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- In reality, Jackal has only two motors, one per side. However, it's more
+         straightforward for Gazebo to simulate as if there's an actuator per wheel. -->
+    <transmission name="${prefix}_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_wheel">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_actuator">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:unless value="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <link name="front_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+  </xacro:unless>
+
+  <xacro:if value="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <link name="front_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+
+    <link name="front_fender_accessory_link"/>
+    <joint name="front_fender_accessory_joint" type="fixed">
+      <origin xyz="0.25629 0 0.07455" rpy="${PI} 0 0" />
+      <parent link="front_fender_link" />
+      <child link="front_fender_accessory_link" />
+    </joint>
+  </xacro:if>
+
+  <joint name="front_fender_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="chassis_link" />
+    <child link="front_fender_link" />
+  </joint>
+
+  <xacro:unless value="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <link name="rear_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+  </xacro:unless>
+
+  <xacro:if value="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <link name="rear_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+
+    <link name="rear_fender_accessory_link"/>
+    <joint name="rear_fender_accessory_joint" type="fixed">
+      <origin xyz="0.25629 0 0.07455" rpy="${PI} 0 0" />
+      <parent link="rear_fender_link" />
+      <child link="rear_fender_accessory_link" />
+    </joint>
+  </xacro:if>
+
+  <joint name="rear_fender_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 ${PI}"/>
+    <parent link="chassis_link" />
+    <child link="rear_fender_link" />
+  </joint>
+
+  <!-- TODO: Make this internal_imu_link or something, and use a mixed-in xacro
+       to supply the joint between it and imu_link. This is important so that imu_link
+       always points to the "active" IMU. When an upgrade IMU is connected, the
+       internal_imu_link should remain, but imu_link should point to the upgrade one. -->
+  <link name="imu_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="${dummy_inertia}" ixy="0.0" ixz="0.0" iyy="${dummy_inertia}" iyz="0.0" izz="${dummy_inertia}"/>
+    </inertial>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <parent link="chassis_link" />
+    <child link="imu_link" />
+  </joint>
+
+  <!-- TODO: Same note as applies to imu_link -->
+  <link name="navsat_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.026" length="0.016" />
+      </geometry>
+      <origin xyz="0 0 0.008" />
+      <material name="black" />
+    </visual>
+  </link>
+  <joint name="navsat_joint" type="fixed">
+    <parent link="chassis_link" />
+    <child link="navsat_link" />
+    <origin xyz="-0.180 0.126 0.1815" />
+  </joint>
+
+  <link name="mid_mount"></link>
+  <joint name="mid_mount_joint" type="fixed">
+    <parent link="chassis_link" />
+    <child link="mid_mount" />
+    <origin xyz="0 0 ${chassis_height}" />
+  </joint>
+
+  <link name="rear_mount"></link>
+  <joint name="rear_mount_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="rear_mount" />
+    <origin xyz="${-mount_spacing} 0 0" />
+  </joint>
+
+  <link name="front_mount"></link>
+  <joint name="front_mount_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="front_mount" />
+    <origin xyz="${mount_spacing} 0 0" />
+  </joint>
+
 </robot>

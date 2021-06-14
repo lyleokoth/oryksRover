@@ -1,0 +1,8 @@
+prefix=/home/lyle/jackal_ws/install
+
+Name: jackal_gazebo
+Description: Description of jackal_gazebo
+Version: 0.4.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

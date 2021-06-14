@@ -4,8 +4,55 @@
     <xacro:include filename="$(find jackal_description)/urdf/jackal_properties.xacro"/>
     <xacro:include filename="$(find jackal_description)/urdf/macros.xacro"/>
     <xacro:include filename="$(find jackal_description)/urdf/materials.xacro"/>
-    <xacro:include filename="$(find jackal_description)/urdf/sensors"/>
+    <xacro:include filename="$(find jackal_description)/urdf/sensors.xacro"/>
     <xacro:include filename="$(find jackal_description)/urdf/gazebo_properties.xacro"/>
     <xacro:include filename="$(find jackal_description)/urdf/gazebo_plugins.xacro"/>
     
+    <link name="base_link"></link>
+
+    <joint name="base_link_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="chassis_link" />
+    </joint>
+
+    <link name="chassis_link">
+        <visual>
+        <origin xyz="0 0 ${footprint_vertical_offset}" rpy="${PI/2} 0 ${PI/2}"/>
+        <geometry>
+            <mesh filename="package://jackal_description/meshes/jackal-base.stl"/>
+        </geometry>
+        <material name="dark_grey" />
+        </visual>
+        <collision>
+        <origin xyz="0 0 ${chassis_height/2}"/>
+        <geometry>
+            <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        </geometry>
+        </collision>
+        <inertial>
+        <!-- Center of mass -->
+        <origin xyz="0.012  0.002 0.067" rpy="0 0 0"/>
+        <mass value="16.523"/>
+        <!-- Moments of inertia: ( chassis without wheels ) -->
+        <inertia
+            ixx="0.3136" ixy="-0.0008" ixz="0.0164"
+            iyy="0.3922" iyz="-0.0009"
+            izz="0.4485"/>
+        </inertial>
+  </link>
+
+  <xacro:wheel prefix="front_left">
+    <origin xyz="${wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+  </xacro:wheel>
+  <xacro:wheel prefix="front_right">
+    <origin xyz="${wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+  </xacro:wheel>
+  <xacro:wheel prefix="rear_left">
+    <origin xyz="${-wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+  </xacro:wheel>
+  <xacro:wheel prefix="rear_right">
+    <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+  </xacro:wheel>
+
 </robot>

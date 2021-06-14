@@ -1,0 +1,8 @@
+prefix=/home/lyle/jackal_ws/devel
+
+Name: jackal_description
+Description: Description of jackal_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
