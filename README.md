@@ -19,7 +19,7 @@ URC was launched in 2006, with competitions being held every summer since 2007. 
 ####                        Are you up for the Challenge?!
 
 ## Rover Rules
-1. Size, Weight, Power
+1. ![Size, Weight, Power](https://github.com/lyleokoth/oryksRover/blob/main/resources/University%20Rover%20Challenge%20Rules%202021.pdf)
     1. The rover shall be a stand-alone, off-the-grid, mobile platform. Tethered power and communications are not allowed. A single connected platform must leave the designated start gate. In the open field, the primary platform may deploy any number of smaller subplatforms, so long as the combined master/slave sub-platforms meet all additional requirements published. 
     2. Rovers shall be weighed by the judges during the set-up time of each mission. For weighing the rover must fit completely within a 1.2 m x 1.2 m box. Rovers may articulate/fold/bend to fit within the “transport crate,” but may not be disassembled to do so. This includes wheels, antenna, and any other system protruding from the rover. There 4s no vertical height limit for 2021, and the rover may be placed in any orientation.Failure to fit within the specified dimensions at weigh-in will result in a 40% penalty.
     3. The maximum allowable mass of the rover when deployed for any competition mission is 50 kg. The total mass of all fielded rover parts for all events is 70 kg. For example, a modular rover may have a robotic arm and a sensor that are never on the rover at the same time. The combinations of rover plus arm and rover plus sensor must each be under 50 kg, but the total rover plus arm plus sensor must be less than 70 kg. 
@@ -28,6 +28,6 @@ URC was launched in 2006, with competitions being held every summer since 2007. 
     4. Rovers shall utilize power and propulsion systems that are applicable to operations on Mars. Air-breathing systems are not permitted: No power or propulsion system may ingest ambient air for the purpose of combustion or other chemical reaction that yields energy. 
     5. No airborne vehicles or lighter-than-air systems are allowed for 2021. 
     6. All rovers shall have a “kill switch” that is readily visible and accessible on the exterior of the rover. This switch shall immediately stop the rover’s movement and cease all power draw from batteries in the event of an emergency such as a battery fire.
-2. Communications Equipment
-3. Restrictions on the 900 MHz and 2.4GHz bands
-4. Interventions
+2. ![Communications Equipment](https://github.com/lyleokoth/oryksRover/blob/main/resources/University%20Rover%20Challenge%20Rules%202021.pdf)
+3. ![Restrictions on the 900 MHz and 2.4GHz bands](https://github.com/lyleokoth/oryksRover/blob/main/resources/University%20Rover%20Challenge%20Rules%202021.pdf)
+4. ![Interventions](https://github.com/lyleokoth/oryksRover/blob/main/resources/University%20Rover%20Challenge%20Rules%202021.pdf)
