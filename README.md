@@ -20,7 +20,7 @@ URC was launched in 2006, with competitions being held every summer since 2007. 
 
 ## Rover Rules
 ##### 1. Size, Weight, Power
-    1. The rover shall be a stand-alone, off-the-grid, mobile platform. Tethered power and communications are not allowed. A single connected platform must leave the designated start gate. In the open field, the primary platform may deploy any number of smaller subplatforms, so long as the combined master/slave sub-platforms meet all additional requirements published. 
+    1. The rover shall be a stand-alone, off-the-grid, mobile platform. Tethered power and <br> communications are not allowed. A single connected platform must leave the designated start gate. In the open field, the primary platform may deploy any number of smaller subplatforms, so long as the combined master/slave sub-platforms meet all additional requirements published. 
     2. Rovers shall be weighed by the judges during the set-up time of each mission. For weighing the rover must fit completely within a 1.2 m x 1.2 m box. Rovers may articulate/fold/bend to fit within the “transport crate,” but may not be disassembled to do so. This includes wheels, antenna, and any other system protruding from the rover. There 4s no vertical height limit for 2021, and the rover may be placed in any orientation.Failure to fit within the specified dimensions at weigh-in will result in a 40% penalty.
 ##### 2. Communications Equipment
 ##### 3. Restrictions on the 900 MHz and 2.4GHz bands
