@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="bot_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.038188 -2.7756E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.8" />
+      <inertia
+        ixx="0.0001804"
+        ixy="-9.7007E-20"
+        ixz="-3.3783E-22"
+        iyy="0.00053906"
+        iyz="-8.3789E-23"
+        izz="0.0007194" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_bracket">
+    <inertial>
+      <origin
+        xyz="-0.010316 0.013793 -3.4694E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.045578" />
+      <inertia
+        ixx="2.1019E-05"
+        ixy="3.1847E-06"
+        ixz="-3.4097E-21"
+        iyy="1.1949E-05"
+        iyz="7.5589E-23"
+        izz="1.6242E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_bracket.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_bracket.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_bracket_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.0475 -0.001"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_bracket" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_coupler">
+    <inertial>
+      <origin
+        xyz="-8.1082E-06 -0.015391 1.4045E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.024489" />
+      <inertia
+        ixx="2.132E-06"
+        ixy="2.5519E-09"
+        ixz="-7.5949E-10"
+        iyy="5.3128E-07"
+        iyz="-4.42E-09"
+        izz="2.1328E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_coupler.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_coupler.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_coupler_joint"
+    type="fixed">
+    <origin
+      xyz="-0.036008 0.0304 0"
+      rpy="-3.1416 0.97109 1.5708" />
+    <parent
+      link="right_bracket" />
+    <child
+      link="right_coupler" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="right_wheel">
+    <inertial>
+      <origin
+        xyz="-6.1785E-11 -1.3014E-11 0.014376"
+        rpy="0 0 0" />
+      <mass
+        value="0.3445" />
+      <inertia
+        ixx="0.00022322"
+        ixy="-1.5874E-13"
+        ixz="-3.4623E-13"
+        iyy="0.00022322"
+        iyz="-1.3247E-14"
+        izz="0.00035265" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 0.5236 -3.1416" />
+    <parent
+      link="right_coupler" />
+    <child
+      link="right_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_bracket">
+    <inertial>
+      <origin
+        xyz="-0.010316 0.013793 -1.2143E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.045578" />
+      <inertia
+        ixx="2.1019E-05"
+        ixy="3.1847E-06"
+        ixz="3.2297E-21"
+        iyy="1.1949E-05"
+        iyz="1.7687E-20"
+        izz="1.6242E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_bracket.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.52941 0.54902 0.54902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_bracket.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_bracket_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.0475 -0.001"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_bracket" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_coupler">
+    <inertial>
+      <origin
+        xyz="-8.0592E-06 -0.015391 1.4073E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.024489" />
+      <inertia
+        ixx="2.132E-06"
+        ixy="2.5519E-09"
+        ixz="-7.5949E-10"
+        iyy="5.3128E-07"
+        iyz="-4.42E-09"
+        izz="2.1328E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_coupler.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_coupler.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_coupler_joint"
+    type="fixed">
+    <origin
+      xyz="-0.036008 0.0304 0"
+      rpy="-3.1416 1.1233 1.5708" />
+    <parent
+      link="left_bracket" />
+    <child
+      link="left_coupler" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="left_wheel">
+    <inertial>
+      <origin
+        xyz="-5.6627E-08 -1.2522E-11 0.014376"
+        rpy="0 0 0" />
+      <mass
+        value="0.3445" />
+      <inertia
+        ixx="0.00022322"
+        ixy="-1.5874E-13"
+        ixz="-3.4751E-13"
+        iyy="0.00022322"
+        iyz="-1.2402E-14"
+        izz="0.00035265" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 0.5236 -3.1416" />
+    <parent
+      link="left_coupler" />
+    <child
+      link="left_wheel" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="caster_one">
+    <inertial>
+      <origin
+        xyz="1.3878E-17 0 -0.018712"
+        rpy="0 0 0" />
+      <mass
+        value="0.066702" />
+      <inertia
+        ixx="2.3272E-05"
+        ixy="1.5158E-20"
+        ixz="-6.9489E-21"
+        iyy="2.3272E-05"
+        iyz="-4.1633E-22"
+        izz="2.7761E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/caster_one.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/caster_one.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_one_joint"
+    type="fixed">
+    <origin
+      xyz="-0.136 0 -0.001"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_one" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="caster_two">
+    <inertial>
+      <origin
+        xyz="0.012696 0.028574 0.025162"
+        rpy="0 0 0" />
+      <mass
+        value="0.01307" />
+      <inertia
+        ixx="9.4194E-07"
+        ixy="-2.3215E-13"
+        ixz="-5.5589E-13"
+        iyy="1.2325E-06"
+        iyz="8.936E-13"
+        izz="9.4194E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/caster_two.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/caster_two.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_two_joint"
+    type="fixed">
+    <origin
+      xyz="-0.012696 -0.025162 -0.025282"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="caster_one" />
+    <child
+      link="caster_two" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_standoff_one">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 0 0.0175"
+        rpy="0 0 0" />
+      <mass
+        value="0.0073655" />
+      <inertia
+        ixx="7.7487E-07"
+        ixy="3.9705E-23"
+        ixz="1.642E-23"
+        iyy="7.7487E-07"
+        iyz="1.782E-23"
+        izz="4.5962E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_one.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_one.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_standoff_one_joint"
+    type="fixed">
+    <origin
+      xyz="0.09 -0.04 0.036"
+      rpy="3.1416 0 -2.8162" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_standoff_one" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="back_cover">
+    <inertial>
+      <origin
+        xyz="-0.00014942 -0.0036131 0.001"
+        rpy="0 0 0" />
+      <mass
+        value="0.025884" />
+      <inertia
+        ixx="1.3684E-05"
+        ixy="-8.4145E-08"
+        ixz="4.4233E-24"
+        iyy="5.9797E-05"
+        iyz="1.4418E-23"
+        izz="7.3464E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_cover.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_cover.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_cover_joint"
+    type="fixed">
+    <origin
+      xyz="0.018006 0.048291 -0.002"
+      rpy="0 0 -1.2454" />
+    <parent
+      link="back_standoff_one" />
+    <child
+      link="back_cover" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_standoff_two">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 1.3878E-17 0.0175"
+        rpy="0 0 0" />
+      <mass
+        value="0.0073655" />
+      <inertia
+        ixx="7.7487E-07"
+        ixy="0"
+        ixz="-4.8215E-23"
+        iyy="7.7487E-07"
+        iyz="2.1993E-23"
+        izz="4.5962E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_two.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_two.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_standoff_two_joint"
+    type="fixed">
+    <origin
+      xyz="0.025 -0.025 0.036"
+      rpy="3.1416 0 -2.4359" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_standoff_two" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="back_standoff_three">
+    <inertial>
+      <origin
+        xyz="-1.3878E-17 0 0.0175"
+        rpy="0 0 0" />
+      <mass
+        value="0.0073655" />
+      <inertia
+        ixx="7.7487E-07"
+        ixy="-2.647E-23"
+        ixz="5.1135E-23"
+        iyy="7.7487E-07"
+        iyz="2.2887E-23"
+        izz="4.5962E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_three.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_three.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_standoff_three_joint"
+    type="fixed">
+    <origin
+      xyz="0.025 0.025 0.036"
+      rpy="3.1416 0 -2.5951" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_standoff_three" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="back_standoff_four">
+    <inertial>
+      <origin
+        xyz="0 -2.7756E-17 0.0175"
+        rpy="0 0 0" />
+      <mass
+        value="0.0073655" />
+      <inertia
+        ixx="7.7487E-07"
+        ixy="0"
+        ixz="-1.211E-22"
+        iyy="7.7487E-07"
+        iyz="1.9507E-22"
+        izz="4.5962E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_four.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/back_standoff_four.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_standoff_four_joint"
+    type="fixed">
+    <origin
+      xyz="0.09 0.04 0.036"
+      rpy="3.1416 0 -2.7228" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_standoff_four" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="front_standoff_one">
+    <inertial>
+      <origin
+        xyz="0 5.5511E-17 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.0042088" />
+      <inertia
+        ixx="1.5343E-07"
+        ixy="1.3235E-23"
+        ixz="1.6175E-23"
+        iyy="1.5343E-07"
+        iyz="-2.8612E-24"
+        izz="2.6264E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_one.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_one.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_standoff_one_joint"
+    type="fixed">
+    <origin
+      xyz="-0.15 -0.05 0.021"
+      rpy="3.1416 0 -1.951" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_standoff_one" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="front_cover">
+    <inertial>
+      <origin
+        xyz="-0.0375 0.11198 -0.023"
+        rpy="0 0 0" />
+      <mass
+        value="0.039529" />
+      <inertia
+        ixx="4.0934E-05"
+        ixy="1.0552E-20"
+        ixz="1.7885E-23"
+        iyy="9.4447E-05"
+        iyz="9.8495E-23"
+        izz="0.00013535" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_cover.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.32" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_cover.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_cover_joint"
+    type="fixed">
+    <origin
+      xyz="-0.06728 -0.13465 0.022"
+      rpy="0 0 -0.38025" />
+    <parent
+      link="front_standoff_one" />
+    <child
+      link="front_cover" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="-0.0074835 0.010668 9.1926E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.22179" />
+      <inertia
+        ixx="0.00010249"
+        ixy="2.6374E-05"
+        ixz="1.3366E-07"
+        iyy="0.00018303"
+        iyz="5.1527E-07"
+        izz="0.00016012" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0375 0.1209 -0.0486"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="front_cover" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="front_standoff_two">
+    <inertial>
+      <origin
+        xyz="-1.0408E-17 -1.3878E-17 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.0042088" />
+      <inertia
+        ixx="1.5343E-07"
+        ixy="0"
+        ixz="-6.3096E-24"
+        iyy="1.5343E-07"
+        iyz="-1.1957E-23"
+        izz="2.6264E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_two.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_two.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_standoff_two_joint"
+    type="fixed">
+    <origin
+      xyz="-0.057 -0.075 0.021"
+      rpy="3.1416 0 -2.1103" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_standoff_two" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="front_standoff_three">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 -2.7756E-17 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.0042088" />
+      <inertia
+        ixx="1.5343E-07"
+        ixy="-4.1359E-23"
+        ixz="-7.1884E-25"
+        iyy="1.5343E-07"
+        iyz="1.1156E-23"
+        izz="2.6264E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_three.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_three.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_standoff_three_joint"
+    type="fixed">
+    <origin
+      xyz="-0.057 0.075 0.021"
+      rpy="3.1416 0 -1.73" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_standoff_three" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="front_standoff_four">
+    <inertial>
+      <origin
+        xyz="0 2.7756E-17 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.0042088" />
+      <inertia
+        ixx="1.5343E-07"
+        ixy="4.3343E-23"
+        ixz="-3.2914E-24"
+        iyy="1.5343E-07"
+        iyz="3.1968E-24"
+        izz="2.6264E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_four.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.51765 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://bot_description/meshes/front_standoff_four.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_standoff_four_joint"
+    type="fixed">
+    <origin
+      xyz="-0.15 0.05 0.021"
+      rpy="3.1416 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_standoff_four" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>
