@@ -17,3 +17,9 @@ The University Rover Challenge (URC) is the world's premier robotics competition
 URC was launched in 2006, with competitions being held every summer since 2007.  URC consistently draws an international field of the most talented and promising students around.  If you're a college student interested in robotics and Mars exploration, the only question left is...
  
 ####                        Are you up for the Challenge?!
+
+## Rover Rules
+1. Size, Weight, Power
+2. Communications Equipment
+3. Restrictions on the 900 MHz and 2.4GHz bands
+4. Interventions
